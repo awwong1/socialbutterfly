@@ -1,11 +1,43 @@
-Router.route('/', function () {
-  this.render('Home');
+Router.route('Home', {
+  path: '/',
+  onBeforeAction: function () {
+    if (Meteor.userId()) {
+      this.render('App');
+    } else {
+      this.next();
+    }
+  }
 });
 
-Router.route('/signup', function () {
-  this.render('SignUp');
+Router.route('SignUp', {
+  path: '/signup',
+  onBeforeAction: function () {
+    if (Meteor.userId()) {
+      this.render('App');
+    } else {
+      this.next();
+    }
+  }
 });
 
-Router.route('/signin', function () {
-  this.render('SignIn');
+Router.route('SignIn', {
+  path: '/signin',
+  onBeforeAction: function () {
+    if (Meteor.userId()) {
+      this.render('App');
+    } else {
+      this.next();
+    }
+  }
+});
+
+Router.route('App', {
+  path: '/app',
+  onBeforeAction: function () {
+    if (!Meteor.userId()) {
+      this.render('SignIn');
+    } else {
+      this.next();
+    }
+  }
 });
