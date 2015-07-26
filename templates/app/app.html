@@ -15,10 +15,11 @@
     </div>
   </div>
   <div class="ui text container">
-    <form class="new-message">
+    <form class="ui large form new-message">
       <div class="ui input fluid">
         <input type="text" name="text" placeholder="Type to chat"/>
       </div>
+      <div class="ui error message"></div>
     </form>
   </div>
   <div class="ui text container">
@@ -36,7 +37,11 @@
 <template name="message">
   <div class="item">
     <div class="content">
-      <div class="header">{{username}} | {{createdAt}}</div>
+      <div class="header"><div class="ui label"><i class="user icon"></i> {{username}}</div>
+        <div class="ui label">
+          <i class="calendar icon"></i> <a class="#">{{createdAt}}</a>
+        </div>
+      </div>
       {{text}}
     </div>
   </div>
