@@ -1,0 +1,43 @@
+<template name="App">
+  <div class="ui main text container">
+    <h1 class="ui header">Social Butterfly</h1>
+
+    <p>Welcome, {{currentUser.username}}!</p>
+  </div>
+
+
+  <div id="floating_menu" class="ui borderless main menu">
+    <div class="ui text container">
+      <div href="#" class="header item">
+        Menu
+      </div>
+      <a id="signout_button" href="#" class="ui right floated item">Sign Out</a>
+    </div>
+  </div>
+  <div class="ui text container">
+    <form class="new-message">
+      <div class="ui input fluid">
+        <input type="text" name="text" placeholder="Type to chat"/>
+      </div>
+    </form>
+  </div>
+  <div class="ui text container">
+    <div class="ui segment">
+      <div class="ui relaxed divided list">
+        {{#each messages}}
+          {{> message}}
+        {{/each}}
+      </div>
+    </div>
+  </div>
+  {{> Footer}}
+</template>
+
+<template name="message">
+  <div class="item">
+    <div class="content">
+      <div class="header">{{username}} | {{createdAt}}</div>
+      {{text}}
+    </div>
+  </div>
+</template>
